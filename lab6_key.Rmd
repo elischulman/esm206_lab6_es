@@ -83,12 +83,29 @@ issue --> if you had a penguin with flipper length 0, the penguin would have a m
 ### Broom package returns model outputs as tidy data pieces
 
 ```{r}
+# broom:: not necessary to reference tidy() --> just did it to show its part of broom and not tidyverse
 penguin_lm_tidy <- broom::tidy(penguin_lm)
 
 penguin_lm_tidy
+
 ```
 
+How can I include my model equation in a report?
 
+```{r}
+penguin_reg <- extract_eq(model = penguin_lm, use_coefs = TRUE)
+
+penguin_reg
+```
+
+Diagnostic plots that explore (regression fit?)
+```{r}
+plot(penguin_lm)
+# residual vs fitter:
+# Q-Q:
+# scale location: 
+# residual vs leverage: 
+```
 
 
 
