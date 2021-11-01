@@ -54,6 +54,48 @@ mwu
 ```
 --> median scores for groups 1 and 2 did not differ significantly. (Mann Witney U test: U(df) = 86, p = .28)
 
+## Linear Regression
+simple linear regression (single dependent variable and single independent variable)
+
+```{r}
+#exploratory plot of penguin body mass (y) vs flipper length (x)
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = lm) # This is wrong, didn;t see the line she added 
+
+```
+
+Find a linear regression model using ordinary least squares describing the relationship etween flipper length and body mass for these penguins 
+
+3 pieces:
+- type of model?
+- what is the relationship to model (DV ~ IV(s))
+- where is the data 
+
+```{r}
+penguin_lm <- lm(body_mass_g ~ flipper_length_mm, data = penguins)
+penguin_lm
+```
+Regression line --> body_mass_g = 49.69(flipper_length_mm) - 5780.83
+
+issue --> if you had a penguin with flipper length 0, the penguin would have a mass of -5780 g
+
+### Broom package returns model outputs as tidy data pieces
+
+```{r}
+penguin_lm_tidy <- broom::tidy(penguin_lm)
+
+penguin_lm_tidy
+```
+
+
+
+
+
+
+
+
+
 
 
 
